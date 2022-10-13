@@ -1,0 +1,143 @@
+{
+    "swagger": "2.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Swagger Converter",
+        "license": {
+            "name": "MIT"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/v1",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/user": {
+            "post": {
+                "summary": "Create an User",
+                "operationId": "creatUser",
+                "tags": [
+                    "user"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success"
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "summary": "Login user",
+                "operationId": "loginUser",
+                "tags": [
+                    "userLogin"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Null response"
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Login"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/converter": {
+            "post": {
+                "summary": "Converter",
+                "operationId": "converter",
+                "tags": [
+                    "converter"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Null response"
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Converter"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "required": [
+                "name",
+                "login",
+                "password"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "login": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "Login": {
+            "required": [
+                "login",
+                "password"
+            ],
+            "properties": {
+                "login": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "Converter": {
+            "required": [
+                "price"
+            ],
+            "properties": {
+                "price": {
+                    "type": "number"
+                }
+            }
+        },
+        "Error": {
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
